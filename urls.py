@@ -1,0 +1,5 @@
+URL_BASE = "https://stellarburgers.nomoreparties.site/"
+URL_LOGIN = "login"
+URL_ACCOUNT = "account"
+URL_PROFILE = f"{URL_ACCOUNT}/profile"
+URL_REGISTER = "register"
