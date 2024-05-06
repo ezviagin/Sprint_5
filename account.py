@@ -31,15 +31,11 @@ class Account:
         email_field = self.driver.find_element(*locate.Login.EMAIL_FIELD)
         email_field.clear()
         email_field.send_keys(credentials.email)
-        #WebDriverWait(self.driver, ATTRIBUTE_WAIT_TIMEOUT).until(ec.visibility_of_element_located(
-       #     locate.Login.get_email_field_value(credentials.email)))
 
         password_field = self.driver.find_element(*locate.Login.PASSWORD_FIELD)
         password_field.clear()
         password_field.send_keys(credentials.password)
-        #WebDriverWait(self.driver, ATTRIBUTE_WAIT_TIMEOUT).until(ec.visibility_of_element_located(
-        #    locate.Login.get_password_field_value(credentials.password)))
-
+        
     def register(self, email=get_email(), password=get_password()) -> Credentials:
         self.driver.find_element(*locate.Login.LOGIN_INTO_ACCOUNT_BUTTON).click()
         WebDriverWait(self.driver, ATTRIBUTE_WAIT_TIMEOUT).until(ec.visibility_of_element_located(
