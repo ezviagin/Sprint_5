@@ -4,7 +4,6 @@ import string
 ATTRIBUTE_WAIT_TIMEOUT = 10
 
 
-
 def get_email():
     username_length = random.randint(6, 12)
     username = ''.join(random.choices(string.ascii_lowercase + string.digits, k=username_length))

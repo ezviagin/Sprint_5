@@ -4,7 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from locators import StellarBurgerLocators as locate
 from urls import URL_BASE, URL_ACCOUNT
-from utils import get_email, get_password, ATTRIBUTE_WAIT_TIMEOUT
+from helpers import get_email, get_password, ATTRIBUTE_WAIT_TIMEOUT
 
 
 class Credentials:
@@ -29,14 +29,16 @@ class Account:
 
     def __fill_credentials(self, credentials: Credentials) -> None:
         email_field = self.driver.find_element(*locate.Login.EMAIL_FIELD)
+        email_field.clear()
         email_field.send_keys(credentials.email)
-        WebDriverWait(self.driver, ATTRIBUTE_WAIT_TIMEOUT).until(ec.visibility_of_element_located(
-            locate.Login.get_email_field_value(credentials.email)))
+        #WebDriverWait(self.driver, ATTRIBUTE_WAIT_TIMEOUT).until(ec.visibility_of_element_located(
+       #     locate.Login.get_email_field_value(credentials.email)))
 
         password_field = self.driver.find_element(*locate.Login.PASSWORD_FIELD)
+        password_field.clear()
         password_field.send_keys(credentials.password)
-        WebDriverWait(self.driver, ATTRIBUTE_WAIT_TIMEOUT).until(ec.visibility_of_element_located(
-            locate.Login.get_password_field_value(credentials.password)))
+        #WebDriverWait(self.driver, ATTRIBUTE_WAIT_TIMEOUT).until(ec.visibility_of_element_located(
+        #    locate.Login.get_password_field_value(credentials.password)))
 
     def register(self, email=get_email(), password=get_password()) -> Credentials:
         self.driver.find_element(*locate.Login.LOGIN_INTO_ACCOUNT_BUTTON).click()
@@ -116,7 +118,7 @@ class Account:
             locate.Account.CREATE_ORDER_BUTTON))
 
     def logout(self):
-        self.driver.get(f"{self.base_url}{URL_ACCOUNT}")
+        self.driver.get(f"{URL_ACCOUNT}")
         WebDriverWait(self.driver, ATTRIBUTE_WAIT_TIMEOUT).until(ec.presence_of_element_located(
             locate.Account.PROFILE_TITLE))
 
