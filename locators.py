@@ -22,15 +22,6 @@ class StellarBurgerLocators:
         EMAIL_FIELD = (By.XPATH, ".//label[text()='Email']/..//input")                              # поле "Email"
         PASSWORD_FIELD = (By.XPATH, ".//label[text()='Пароль']/..//input")                          # поле "Пароль"
 
-        # Getters
-        @staticmethod
-        def get_email_field_value(email: str) -> tuple[str, str]:
-            return (By.XPATH, "//input[@type='text' and @value='" + email + "']")
-
-        @staticmethod
-        def get_password_field_value(password: str) -> tuple[str, str]:
-            return (By.XPATH, "//input[@type='password' and @value='" + password + "']")
-
         # Errors
         WRONG_PASSWORD_ERROR = (By.XPATH, ".//p[starts-with(@class,'input__error') and text()='Некорректный пароль']")  # идентификатор ошибки "Неверный пароль"
 

@@ -3,9 +3,8 @@ import pytest
 
 
 class TestConstructor:
-    @staticmethod
     @pytest.mark.parametrize('ingredients', ['Булки', 'Соусы', 'Начинки'])
-    def test_go_to_ingredients(driver: WebDriver, account: Account, ingredients: str):
+    def test_go_to_ingredients(self, driver: WebDriver, account: Account, ingredients: str):
         driver.find_element(*locate.Constructor.CONSTRUCTOR_BUTTON).click()
 
         ingredient = driver.find_elements(
